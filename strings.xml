@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Kalkulator Zakat &amp; Keuangan</string>
+    <string name="title_hitung">Hitung Zakat 2,5%</string>
+    <string name="hint_nominal">Masukkan nominal harta</string>
+    <string name="btn_hitung">Hitung Zakat</string>
+    <string name="btn_reset">Reset</string>
+    <string name="btn_simpan">Simpan ke Catatan</string>
+</resources>

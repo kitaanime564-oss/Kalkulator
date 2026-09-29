@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAF9"
+    tools:context=".MainActivity">
+
+    <!-- Header Toolbar / Banner Aplikasi -->
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#0F5132"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvAppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kalkulator Zakat &amp; Keuangan"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvAppSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Hitung Zakat Maal &amp; Kelola Catatan Keuangan"
+            android:textColor="#D1E7DD"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Konten Scrollable: Form Hitung Zakat & Catatan -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/adViewContainer"
+        android:layout_below="@id/layoutHeader"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Card Kalkulator Zakat -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:elevation="3dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hitung Zakat (Kadar 2,5%)"
+                    android:textColor="#0F5132"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Masukkan total harta tersimpan (tabungan/emas/penghasilan):"
+                    android:textColor="#6C757D"
+                    android:textSize="12sp" />
+
+                <!-- Kolom Input Nominal Harta -->
+                <EditText
+                    android:id="@+id/etNominalHarta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:hint="Contoh: 100000000"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvFormatNominal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Nominal: Rp 0"
+                    android:textColor="#495057"
+                    android:textSize="13sp" />
+
+                <!-- Tombol Aksi Hitung dan Bersihkan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnHitungZakat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#0F5132"
+                        android:text="Hitung Zakat"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnReset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="#6C757D"
+                        android:text="Reset"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Box Tampilan Hasil Zakat 2.5% -->
+                <LinearLayout
+                    android:id="@+id/layoutHasil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="#D1E7DD"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kewajiban Zakat yang Harus Dikeluarkan:"
+                        android:textColor="#0F5132"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvHasilZakat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Rp 0"
+                        android:textColor="#0F5132"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvStatusNisab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="*Nisab emas 85 gram (~Rp 85.000.000) dan telah genap 1 haul (tahun)."
+                        android:textColor="#146C43"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Tombol Simpan ke Catatan Keuangan -->
+                <Button
+                    android:id="@+id/btnSimpanCatatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#198754"
+                    android:text="Simpan ke Catatan Keuangan"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <!-- Card Catatan Keuangan Singkat -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="#FFFFFF"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Riwayat &amp; Catatan Keuangan Zakat"
+                    android:textColor="#212529"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCatatanHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="Belum ada riwayat perhitungan yang tersimpan."
+                    android:textColor="#495057"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btnHapusHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#DC3545"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Hapus Catatan"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Wadah Iklan Banner Google AdMob di Bagian Paling Bawah (Bottom Aligned) -->
+    <LinearLayout
+        android:id="@+id/adViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Google AdMob Banner AdView dengan Unit ID Asli Pengguna -->
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-2864823906339269/2000495225" />
+
+    </LinearLayout>
+
+</RelativeLayout>
