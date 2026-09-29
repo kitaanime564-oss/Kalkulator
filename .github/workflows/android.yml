@@ -50,6 +50,6 @@ jobs:
       with:
         name: Kalkulator-Zakat-Matang
         path: |
-          **/build/outputs/apk/debug/*.apk
-          **/build/outputs/apk/*/*.apk
+          ./**/*.apk
+          build/outputs/apk/debug/*.apk
           
