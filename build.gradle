@@ -1,21 +1,38 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
+// Top-level build file wplugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.zakat.keuangan'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.zakat.keuangan"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.2'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+    // Google Play Services Ads (AdMob)
+    implementation 'com.google.android.gms:play-services-ads:22.6.0'
+}here you can add configuration options common to all sub-proje
